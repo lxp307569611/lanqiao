@@ -1,0 +1,27 @@
+1、二维数组
+
+ - 给图片Image复制，总共有四个方向，每个方向有3张图片，故初始化一个4层3列的二维数组
+
+ ```java
+ Image image = new Image[4][3];
+ ```
+
+2、嵌套for循环
+
+ - 利用嵌套for循环对每个方向的3张图片进行赋值
+
+ ```java
+/*
+i的含义：
+0：up
+1: down
+2: left
+3: right
+*/
+	for(int i=0;i<image.length;i++)
+		for(int j=0;j<image[i].length;j++){				
+			image[i][j] = Image.createImage("/sayo"+i+j+".png");
+		}
+ ```
+
+3、

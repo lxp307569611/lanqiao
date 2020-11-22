@@ -32,7 +32,7 @@ class MainCanvas extends Canvas
 		try{
 			
 			for(int i=0;i<img_up.length;i++){
-				img_up[i] = Image.createImage("/sayo"+i+"4.png");
+				img_up[i] = Image.createImage("/sayo"+"i"+"4.png");
 			}
 			//上
 			/*
@@ -41,8 +41,8 @@ class MainCanvas extends Canvas
 			*/
 
 
-			for(int i=0;i<img_down.length;i++){
-				img_down[i] = Image.createImage("/sayo"+i+"0.png");
+			for(i=0;i<img_down.length;i++){
+				img_down[i] = Image.createImage("/sayo"+"i"+"0.png");
 			}
 			//下
 			/*
@@ -50,8 +50,7 @@ class MainCanvas extends Canvas
 			img_down2=Image.createImage("/sayo20.png");
 			*/
 
-
-			for(int i=0;i<img_left.length;i++){
+			for(i=0;i<img_left.length;i++){
 				img_left[i] = Image.createImage("/sayo"+i+"2.png");
 			}
 			//左
@@ -61,7 +60,7 @@ class MainCanvas extends Canvas
 			*/
 
 
-			for(int i=0;i<img_right.length;i++){
+			for(i=0;i<img_right.length;i++){
 				img_right[i] = Image.createImage("/sayo"+i+"6.png");
 			}
 			//右
@@ -101,7 +100,7 @@ class MainCanvas extends Canvas
 				currentImage = img_down[2];
 				downflag = 1;
 			}
-			y=y+1
+			y=y+1;
 		}
 
 		if (action == LEFT)
