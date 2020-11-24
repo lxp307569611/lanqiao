@@ -1,8 +1,6 @@
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import java.io.*;
-import java.util.*;
-
 
 public class AI extends MIDlet
 {
@@ -22,17 +20,17 @@ public class AI extends MIDlet
 }
 class MainCanvas extends Canvas implements Runnable
 {	
-
-	//定义一个线程
 	Thread thread;
 	Image image[][] = new Image[4][3];
 	//Image image1,image2,image3,image4;
-	Image currentImage,bossImage;
-	
-	Random rd = new Random();
+	Image currentImage;
+	Image bossImage;
+
 
 	int heroX,heroY;
 	int bossX,bossY;
+
+
 	int flag;
 
 	public MainCanvas() {
@@ -44,19 +42,23 @@ class MainCanvas extends Canvas implements Runnable
 			 2: left
 			 3: right
 			*/
-			//图片初始化
 			for(int i=0;i<image.length;i++)
-				for(int j=0;j<image[i].length;j++){					
+				for(int j=0;j<image[i].length;j++){
+					
 					image[i][j] = Image.createImage("/sayo"+i+j+".png");
 			}
+			
+
 			bossImage = Image.createImage("/zuzu000.png");
+
 			thread=new Thread(this);
 			thread.start();
 
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-		//其余变量初始化
+		
+
 		flag=1;
 
 		heroX=120;
@@ -65,9 +67,12 @@ class MainCanvas extends Canvas implements Runnable
 		bossX=0;
 		bossY=0;
 
-		currentImage = image[1][1];	
+		currentImage = image[1][1];
+
+
+		
 	}
-	//方向按键方法
+	
 	public void keyPressed(int keyCode){
 		int action = getGameAction(keyCode);	
 		//上
@@ -93,11 +98,9 @@ class MainCanvas extends Canvas implements Runnable
 		}
 		this.repaint();
 	}
-	//重写线程run方法
+	
 	public void run(){
 		while(true){
-			int ifMove = rd.nextInt(10);
-			System.out.println(ifMove);
 			try
 			{
 				Thread.sleep(200);//FPS：屏幕刷新率
@@ -105,24 +108,24 @@ class MainCanvas extends Canvas implements Runnable
 			catch(InterruptedException e){
 				e.printStackTrace();
 			}
-			if(ifMove%3==0){
-				if(bossX<heroX){
-					bossX++;
-				}
-				else{
-					bossX--;
-				}
+			if(bossX<heroX){
+				bossX++;
+			}
+			else{
+				bossX--;
+			}
 
-				if(bossY<heroY){
-					bossY++;
-				}else{
-					bossY--;
-				}
+			if(bossY<heroY){
+				bossY++;
+			}else{
+				bossY--;
 			}
 			repaint();
 		}
 	}
-	//自定义方法
+
+
+
 	public void changePicAndDirection(int direction){
 		if(flag==1){
 			currentImage = image[direction][0];
