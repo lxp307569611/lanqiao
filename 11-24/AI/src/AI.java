@@ -18,9 +18,9 @@ public class AI extends MIDlet
 	public void pauseApp(){
 	}
 }
-class MainCanvas extends Canvas implements Runnable
+class MainCanvas extends Canvas 
 {	
-	Thread thread;
+
 	Image image[][] = new Image[4][3];
 	//Image image1,image2,image3,image4;
 	Image currentImage;
@@ -68,9 +68,6 @@ class MainCanvas extends Canvas implements Runnable
 		bossY=0;
 
 		currentImage = image[1][1];
-
-
-		
 	}
 	
 	public void keyPressed(int keyCode){
@@ -99,46 +96,21 @@ class MainCanvas extends Canvas implements Runnable
 		this.repaint();
 	}
 	
-	public void run(){
-		while(true){
-			try
-			{
-				Thread.sleep(200);//FPS£ºÆÁÄ»Ë¢ÐÂÂÊ
-			}
-			catch(InterruptedException e){
-				e.printStackTrace();
-			}
-			if(bossX<heroX){
-				bossX++;
-			}
-			else{
-				bossX--;
-			}
-
-			if(bossY<heroY){
-				bossY++;
-			}else{
-				bossY--;
-			}
-			repaint();
-		}
-	}
-
-
-
 	public void changePicAndDirection(int direction){
 		if(flag==1){
-			currentImage = image[direction][0];
+			currentImage = heroImage[direction][0];
 			flag--;
 		}else{
-			currentImage = image[direction][2];
+			currentImage = heroImage[direction][2];
 			flag=1;
 		}
 	}
+
 	public void paint(Graphics g) {
 		g.setColor(0,0,0);
 		g.fillRect(0,0,getWidth(),getHeight());
 		g.drawImage(currentImage,heroX,heroY,0);
 		g.drawImage(bossImage,bossX,bossY,0);
 	}
+
 }
